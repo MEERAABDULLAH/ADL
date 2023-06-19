@@ -1,0 +1,89 @@
+from mpl_toolkits.mplot3d import Axes3D
+from sklearn.preprocessing import StandardScaler
+import matplotlib.pyplot as plt # plotting
+import numpy as np # linear algebra
+import os # accessing directory structure
+import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
+
+print(os.listdir('../input'))
+['class.csv', 'zoo.csv']
+
+
+nRowsRead = 1000 # specify 'None' if want to read whole file
+df1 = pd.read_csv('../input/class.csv', delimiter=',', nrows = nRowsRead)
+df1.dataframeName = 'class.csv'
+nRow, nCol = df1.shape
+print(f'There are {nRow} rows and {nCol} columns')
+
+df1.head(5)
+
+	Class_Number	Number_Of_Animal_Species_In_Class	Class_Type	Animal_Names
+0	1	41	Mammal	aardvark, antelope, bear, boar, buffalo, calf,...
+1	2	20	Bird	chicken, crow, dove, duck, flamingo, gull, haw...
+2	3	5	Reptile	pitviper, seasnake, slowworm, tortoise, tuatara
+3	4	13	Fish	bass, carp, catfish, chub, dogfish, haddock, h...
+4	5	4	Amphibian	frog, frog, newt, toad
+
+Distribution graphs (histogram/bar graph) of sampled columns:
+
+
+plotPerColumnDistribution(df1, 10, 5)
+/opt/conda/lib/python3.6/site-packages/matplotlib/tight_layout.py:182: UserWarning: The bottom and top margins cannot be made large enough to accommodate all axes decorations. 
+  warnings.warn('The bottom and top margins cannot be made large '
+￼
+
+
+Correlation matrix:
+
+
+plotCorrelationMatrix(df1, 8)
+￼
+
+
+Scatter and density plots:
+
+
+plotScatterMatrix(df1, 6, 15)
+￼
+
+
+Let's check 2nd file: ../input/zoo.csv¶
+
+
+nRowsRead = 1000 # specify 'None' if want to read whole file
+df2 = pd.read_csv('../input/zoo.csv', delimiter=',', nrows = nRowsRead)
+df2.dataframeName = 'zoo.csv'
+nRow, nCol = df2.shape
+print(f'There are {nRow} rows and {nCol} columns')
+There are 101 rows and 18 columns
+
+
+Let's take a quick look at what the data looks like:
+
+
+df2.head(5)
+																		
+																		
+																		
+																		
+																		
+																		
+
+Distribution graphs (histogram/bar graph) of sampled columns:
+
+
+plotPerColumnDistribution(df2, 10, 5)
+￼
+
+
+Correlation matrix:
+
+
+plotCorrelationMatrix(df2, 8)
+￼
+
+
+Scatter and density plots:
+
+
+plotScatterMatrix(df2, 20, 10)
